@@ -1,25 +1,28 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
+import { render } from '@testing-library/angular';
+import { FormsModule } from '@angular/forms';
 
 import { TaskformComponent } from './taskform.component';
 
 describe('TaskformComponent', () => {
-  let component: TaskformComponent;
-  let fixture: ComponentFixture<TaskformComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskformComponent ]
-    })
-    .compileComponents();
+      declarations: [TaskformComponent],
+      imports: [FormsModule]
+    }).compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TaskformComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('Should add new task to localStorage on submit', async () => {
+    const { getByTestId, click, type } = await render(TaskformComponent);
+    const newTaskName = 'New Task';
+    type(getByTestId('name'), newTaskName);
+    click(getByTestId('submit'));
+    const items = JSON.parse(localStorage.getItem('tasks'));
+    expect(items.length).toBe(1);
+    expect(items[0].name).toBe(newTaskName);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  afterEach(() => {
+    localStorage.removeItem('tasks');
   });
 });
