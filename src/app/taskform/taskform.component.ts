@@ -15,7 +15,7 @@ export class TaskformComponent implements OnInit {
     console.log(this.taskName);
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-    tasks.push({ name: this.taskName || 'hey hey' });
+    tasks.push({ name: this.taskName || 'hey hey', done: false });
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }

@@ -3,11 +3,12 @@ import { render } from '@testing-library/angular';
 import { AppComponent } from './app.component';
 import { TaskformComponent } from './taskform/taskform.component';
 import { FormsModule } from '@angular/forms';
+import { TaskslistComponent } from './taskslist/taskslist.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, TaskformComponent],
+      declarations: [AppComponent, TaskformComponent, TaskslistComponent],
       imports: [FormsModule]
     }).compileComponents();
   }));

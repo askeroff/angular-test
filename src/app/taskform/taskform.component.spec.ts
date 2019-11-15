@@ -20,6 +20,7 @@ describe('TaskformComponent', () => {
     const items = JSON.parse(localStorage.getItem('tasks'));
     expect(items.length).toBe(1);
     expect(items[0].name).toBe(newTaskName);
+    expect(items[0].done).toBe(false);
   });
 
   afterEach(() => {

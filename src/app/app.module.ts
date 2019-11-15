@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TaskformComponent } from './taskform/taskform.component';
+import { TaskslistComponent } from './taskslist/taskslist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskformComponent
+    TaskformComponent,
+    TaskslistComponent
   ],
   imports: [
     BrowserModule,
