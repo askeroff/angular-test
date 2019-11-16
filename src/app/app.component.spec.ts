@@ -18,6 +18,18 @@ describe('AppComponent', () => {
     const { getByTestId } = await render(AppComponent);
     expect(getByTestId('title').textContent).toBe('Todo App');
   });
+  
+  it('Should update the tasklist after entering new task',async () => {
+    const { getByTestId, type, click } = await render(AppComponent);
+    const newTaskName = 'New Task';
+    type(getByTestId('name'), newTaskName);
+    click(getByTestId('submit'));
+    expect(getByTestId('task-0').textContent).toBe(newTaskName);
+  });
+  
+  afterEach(() => {
+    localStorage.removeItem('tasks');
+  });
 });
 
 // describe('AppComponent', () => {

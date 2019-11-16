@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-taskform',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskformComponent implements OnInit {
   taskName: string;
+  @Output() taskCreate = new EventEmitter();
   constructor() {}
 
   ngOnInit() {}
@@ -18,5 +19,11 @@ export class TaskformComponent implements OnInit {
     tasks.push({ name: this.taskName || 'hey hey', done: false });
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+    this.taskCreated();
+  }
+
+  taskCreated() {
+    this.taskCreate.emit(null);
   }
 }

@@ -22,7 +22,11 @@ describe('TaskslistComponent', () => {
       }
     ];
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    const { getByTestId } = await render(TaskslistComponent);
+    const { getByTestId } = await render(TaskslistComponent, {
+      componentProperties: {
+        tasks
+      }
+    });
     expect(getByTestId('task-0').textContent).toBe('First task');
     expect(getByTestId('task-1').textContent).toBe('Second task!!');
   });

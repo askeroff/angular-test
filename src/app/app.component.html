@@ -1,7 +1,7 @@
 <div class="wrapper">
   <h2 data-testid="title">{{ title }}</h2>
 
-  <app-taskform></app-taskform>
+  <app-taskform (taskCreate)="updateTasks()"></app-taskform>
 
-  <app-taskslist></app-taskslist>
+  <app-taskslist [tasks]="tasks"></app-taskslist>
 </div>
