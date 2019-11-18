@@ -1,0 +1,17 @@
+ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.task_item {
+  list-style: none;
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task_item + .task_item {
+  border-top: 1px solid #ededed;
+}
