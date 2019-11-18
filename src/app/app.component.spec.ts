@@ -1,7 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
-import { render } from '@testing-library/angular';
+import { render } from '@testing-library/angular'
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,7 +8,17 @@ describe('AppComponent', () => {
       declarations: [AppComponent]
     }).compileComponents();
   }));
+  
+  it('Should render the title correctly', async () => {
+    const component = await render(AppComponent);
+    expect(component.getByTestId('title').textContent).toBe('Todo App');
+  });
 });
+
+
+
+
+
 
 // describe('AppComponent', () => {
 //   beforeEach(async(() => {
