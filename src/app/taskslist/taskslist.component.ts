@@ -12,4 +12,9 @@ export class TaskslistComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  deleteTask(i) {
+    this.tasks = this.tasks.filter((item, index) => index !== i);
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
 }

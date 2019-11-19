@@ -1,6 +1,10 @@
 <ul>
-  <li class="task_item" *ngFor="let task of tasks; let i = index">
+  <li
+    class="task_item"
+    data-testid="item"
+    *ngFor="let task of tasks; let i = index"
+  >
     <span [attr.data-testid]="'task-' + i">{{ task.name }}</span>
-    <button>Delete</button>
+    <button (click)="deleteTask(i);" [attr.data-testid]="'delete-' + i">Delete</button>
   </li>
 </ul>
