@@ -1,4 +1,4 @@
-<form class="form_wrapper">
+<form class="form_wrapper" (submit)="submitForm(taskName)">
   <label for="newTask">
     <input
       type="text"
@@ -10,6 +10,11 @@
     />
   </label>
   <label for="submitButton">
-    <input type="submit" value="Add" class="submit_button" />
+    <input
+      type="submit"
+      data-testid="submit-button"
+      value="Add"
+      class="submit_button"
+    />
   </label>
 </form>

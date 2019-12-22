@@ -1,11 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
 import { render } from '@testing-library/angular'
 import { AppComponent } from './app.component';
+import { TaskformComponent } from './taskform/taskform.component';
+import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent]
+      declarations: [AppComponent, TaskformComponent],
+      imports: [FormsModule]
     }).compileComponents();
   }));
   
@@ -13,6 +16,7 @@ describe('AppComponent', () => {
     const component = await render(AppComponent);
     expect(component.getByTestId('title').textContent).toBe('Todo App');
   });
+  
 });
 
 
