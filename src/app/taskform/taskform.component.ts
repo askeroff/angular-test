@@ -6,14 +6,16 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./taskform.component.css"]
 })
 export class TaskformComponent implements OnInit {
+  taskName: string;
   constructor() {}
 
   ngOnInit() {}
 
-  submitForm(taskName) {
+  submitForm() {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    const newTask = { name: taskName, completed: false };
+    const newTask = { name: this.taskName, completed: false };
     tasks.push(newTask);
+    this.taskName = "";
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 }
