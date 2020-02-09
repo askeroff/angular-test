@@ -11,12 +11,6 @@ describe('AppComponent', () => {
       imports: [FormsModule]
     }).compileComponents();
   }));
-  
-  it('Should render the title correctly', async () => {
-    const component = await render(AppComponent);
-    expect(component.getByTestId('title').textContent).toBe('Todo App');
-  });
-  
 });
 
 

@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 
+export interface ITask{
+  name: string;
+  completed: boolean;
+}
+
 @Component({
   selector: "app-taskform",
   templateUrl: "./taskform.component.html",
