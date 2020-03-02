@@ -21,16 +21,6 @@ describe("TaskformComponent", () => {
     );
   });
 
-  it("Should add new tasks to the localStorage when clicking submit", async () => {
-    const component = await render(TaskformComponent);
-    let taskName = "Task number one";
-    component.type(component.getByTestId("newTask"), taskName);
-    component.click(component.getByTestId("submit-button"));
-    const tasks = JSON.parse(localStorage.getItem("tasks"));
-    expect(tasks.length).toBe(1);
-    expect(tasks[0].name).toBe(taskName);
-  });
-
   it("Input should be reset after pressing submit", async () => {
     const component = await render(TaskformComponent);
     let taskName = "Task number one";

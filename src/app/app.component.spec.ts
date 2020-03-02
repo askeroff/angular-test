@@ -3,14 +3,27 @@ import { render } from '@testing-library/angular'
 import { AppComponent } from './app.component';
 import { TaskformComponent } from './taskform/taskform.component';
 import { FormsModule } from '@angular/forms';
+import { TaskslistComponent } from './taskslist/taskslist.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, TaskformComponent],
+      declarations: [AppComponent, TaskformComponent, TaskslistComponent],
       imports: [FormsModule]
     }).compileComponents();
   }));
+  
+  it("Should add new tasks to the localStorage when clicking submit", async () => {
+    const component = await render(AppComponent);
+    let taskName = "Task number one";
+    component.type(component.getByTestId("newTask"), taskName);
+    component.click(component.getByTestId("submit-button"));
+    const tasks = JSON.parse(localStorage.getItem("tasks"));
+    expect(tasks.length).toBe(1);
+    expect(tasks[0].name).toBe(taskName);
+    
+    expect(component.getByTestId('task-0').textContent.trim()).toBe(taskName);  
+  });
 });
 
 

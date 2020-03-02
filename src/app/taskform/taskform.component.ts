@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 
-export interface ITask{
+export interface ITask {
   name: string;
   completed: boolean;
 }
@@ -12,15 +12,15 @@ export interface ITask{
 })
 export class TaskformComponent implements OnInit {
   taskName: string;
+  @Output("newTaskAdded") taskAdded = new EventEmitter<ITask>();
+
   constructor() {}
 
   ngOnInit() {}
 
   submitForm() {
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     const newTask = { name: this.taskName, completed: false };
-    tasks.push(newTask);
+    this.taskAdded.emit(newTask);
     this.taskName = "";
-    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 }
